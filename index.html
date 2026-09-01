@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EventSphere - Event Management Platform</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+<nav class="navbar">
+    <div class="nav-container">
+
+        <div class="nav-logo">
+            <i class="fas fa-calendar-check"></i>
+            <span>EventSphere</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#dashboard"
+               class="active"
+               data-tab="dashboard">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+
+            <a href="#register"
+               data-tab="register">
+                <i class="fas fa-user-plus"></i>
+                Register
+            </a>
+
+            <a href="#attendees"
+               data-tab="attendees">
+                <i class="fas fa-users"></i>
+                Attendees
+            </a>
+
+            <a href="#checkin"
+               data-tab="checkin">
+                <i class="fas fa-qrcode"></i>
+                Check-In
+            </a>
+
+            <a href="#vendors"
+               data-tab="vendors">
+                <i class="fas fa-store"></i>
+                Vendors
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- =========================
+     MAIN CONTAINER
+========================= -->
+<div class="container">
+
+
+    <!-- =========================
+         DASHBOARD
+    ========================== -->
+    <section id="dashboard" class="tab-content active">
+
+        <div class="hero-section">
+            <h1>🎯 Welcome to EventSphere</h1>
+            <p>
+                Manage events, registrations, tickets,
+                and vendors all in one place
+            </p>
+        </div>
+
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar"></i>
+                </div>
+
+                <div class="stat-info">
+                    <h3 id="totalEvents">0</h3>
+                    <p>Total Events</p>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+
+                <div class="stat-info">
+                    <h3 id="totalRegistrations">0</h3>
+                    <p>Total Registrations</p>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+
+                <div class="stat-info">
+                    <h3 id="totalCheckedIn">0</h3>
+                    <p>Checked In</p>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+
+                <div class="stat-info">
+                    <h3 id="totalVendors">0</h3>
+                    <p>Vendors</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Events -->
+        <div class="events-list">
+
+            <h2>
+                <i class="fas fa-list"></i>
+                Upcoming Events
+            </h2>
+
+            <div
+                id="eventsContainer"
+                class="events-grid">
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         REGISTRATION
+    ========================== -->
+    <section id="register" class="tab-content">
+
+        <h2>
+            <i class="fas fa-user-plus"></i>
+            Event Registration
+        </h2>
+
+        <div class="form-container">
+
+            <form id="registrationForm">
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fas fa-tag"></i>
+                        Select Event *
+                    </label>
+
+                    <select id="regEventId" required>
+                        <option value="">
+                            Choose an event...
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            <i class="fas fa-user"></i>
+                            Full Name *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="regName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            <i class="fas fa-envelope"></i>
+                            Email *
+                        </label>
+
+                        <input
+                            type="email"
+                            id="regEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            <i class="fas fa-phone"></i>
+                            Phone *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="regPhone"
+                            placeholder="10-digit phone number"
+                            pattern="[0-9]{10}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            <i class="fas fa-university"></i>
+                            College
+                        </label>
+
+                        <input
+                            type="text"
+                            id="regCollege"
+                            placeholder="Your college name"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fas fa-code"></i>
+                        Department
+                    </label>
+
+                    <input
+                        type="text"
+                        id="regDepartment"
+                        placeholder="Your department"
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+
+                    <i class="fas fa-ticket-alt"></i>
+                    Register & Get Ticket
+
+                </button>
+
+            </form>
+
+
+            <div
+                id="registrationResult"
+                class="result-box hidden">
+
+                <div
+                    id="ticketDisplay"
+                    class="ticket">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ATTENDEES
+    ========================== -->
+    <section id="attendees" class="tab-content">
+
+        <h2>
+            <i class="fas fa-users"></i>
+            Attendee Management
+        </h2>
+
+
+        <div class="filter-section">
+
+            <select id="attendeeEventFilter">
+
+                <option value="">
+                    Select Event
+                </option>
+
+            </select>
+
+
+            <button
+                type="button"
+                onclick="loadAttendees()"
+                class="btn-secondary">
+
+                <i class="fas fa-sync-alt"></i>
+                Load
+
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table id="attendeesTable">
+
+                <thead>
+
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>QR Code</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="attendeesBody">
+
+                    <tr>
+                        <td
+                            colspan="6"
+                            class="text-center">
+
+                            Select an event to view attendees
+
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CHECK-IN
+    ========================== -->
+    <section id="checkin" class="tab-content">
+
+        <h2>
+            <i class="fas fa-qrcode"></i>
+            QR Code Check-In
+        </h2>
+
+
+        <div class="checkin-container">
+
+            <div class="checkin-form">
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fas fa-ticket-alt"></i>
+                        Ticket ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="checkinTicket"
+                        placeholder="Enter Ticket ID"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    onclick="checkIn()"
+                    class="btn-success">
+
+                    <i class="fas fa-check"></i>
+                    Check In
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="checkinResult"
+                class="result-box hidden">
+            </div>
+
+
+            <div class="scanner-section">
+
+                <h3>
+                    <i class="fas fa-camera"></i>
+                    QR Scanner Simulation
+                </h3>
+
+                <p class="text-muted">
+                    In a real application, the camera would
+                    scan the QR code. For this demo,
+                    enter the Ticket ID above.
+                </p>
+
+
+                <div class="qr-demo">
+
+                    <i class="fas fa-qrcode"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         VENDOR MANAGEMENT
+    ========================== -->
+    <section id="vendors" class="tab-content">
+
+        <h2>
+            <i class="fas fa-store"></i>
+            Vendor Management
+        </h2>
+
+
+        <!-- Vendor Tabs -->
+        <div class="vendor-tabs">
+
+            <!-- IMPORTANT:
+                 IDs match JavaScript -->
+            <button
+                type="button"
+                class="vendor-tab active"
+                data-vtab="add">
+
+                <i class="fas fa-plus"></i>
+                Add Vendor
+
+            </button>
+
+
+            <button
+                type="button"
+                class="vendor-tab"
+                data-vtab="list">
+
+                <i class="fas fa-list"></i>
+                Vendor List
+
+            </button>
+
+
+            <button
+                type="button"
+                class="vendor-tab"
+                data-vtab="assign">
+
+                <i class="fas fa-link"></i>
+                Assign to Event
+
+            </button>
+
+
+            <button
+                type="button"
+                class="vendor-tab"
+                data-vtab="assignments">
+
+                <i class="fas fa-tasks"></i>
+                Assignments
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =========================
+             ADD VENDOR
+        ========================== -->
+
+        <!-- IMPORTANT:
+             id is "add", not "vtab-add" -->
+
+        <div
+            class="vendor-content active"
+            id="add">
+
+            <div class="vendor-card">
+
+                <h3>
+                    <i class="fas fa-store"></i>
+                    Add New Vendor
+                </h3>
+
+
+                <form id="vendorForm">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label>
+                                <i class="fas fa-store"></i>
+                                Vendor Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="vendorName"
+                                placeholder="Vendor name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                <i class="fas fa-tools"></i>
+                                Service Type *
+                            </label>
+
+                            <select
+                                id="vendorService"
+                                required>
+
+                                <option value="">
+                                    Select service...
+                                </option>
+
+                                <option value="Catering">
+                                    Catering
+                                </option>
+
+                                <option value="Photography">
+                                    Photography
+                                </option>
+
+                                <option value="Videography">
+                                    Videography
+                                </option>
+
+                                <option value="Decoration">
+                                    Decoration
+                                </option>
+
+                                <option value="Sound System">
+                                    Sound System
+                                </option>
+
+                                <option value="Lighting">
+                                    Lighting
+                                </option>
+
+                                <option value="Transport">
+                                    Transport
+                                </option>
+
+                                <option value="Printing">
+                                    Printing
+                                </option>
+
+                                <option value="Security">
+                                    Security
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label>
+                                <i class="fas fa-phone"></i>
+                                Contact
+                            </label>
+
+                            <input
+                                type="text"
+                                id="vendorPhone"
+                                placeholder="Contact number"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                <i class="fas fa-envelope"></i>
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="vendorEmail"
+                                placeholder="Vendor email"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            <i class="fas fa-clock"></i>
+                            Availability
+                        </label>
+
+                        <input
+                            type="text"
+                            id="vendorAvailability"
+                            placeholder="e.g., Weekdays, 9 AM - 6 PM"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+
+                        <i class="fas fa-plus"></i>
+                        Add Vendor
+
+                    </button>
+
+                </form>
+
+
+                <div
+                    id="vendorResult"
+                    class="result-box hidden">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             VENDOR LIST
+        ========================== -->
+
+        <div
+            class="vendor-content"
+            id="list">
+
+            <div class="vendor-card">
+
+                <h3>
+                    <i class="fas fa-list"></i>
+                    All Vendors
+                </h3>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Vendor ID</th>
+                                <th>Name</th>
+                                <th>Service</th>
+                                <th>Contact</th>
+                                <th>Rating</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="vendorsBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="text-center">
+
+                                    No vendors added yet.
+                                    Click "Add Vendor" to get started.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+
+                <!-- Rating -->
+                <div class="rating-section">
+
+                    <h4>
+                        <i class="fas fa-star"></i>
+                        Rate a Vendor
+                    </h4>
+
+
+                    <div class="rating-form">
+
+                        <input
+                            type="text"
+                            id="rateVendorId"
+                            placeholder="Vendor ID"
+                        >
+
+
+                        <select id="rateValue">
+
+                            <option value="1">
+                                ⭐
+                            </option>
+
+                            <option value="2">
+                                ⭐⭐
+                            </option>
+
+                            <option value="3">
+                                ⭐⭐⭐
+                            </option>
+
+                            <option value="4">
+                                ⭐⭐⭐⭐
+                            </option>
+
+                            <option
+                                value="5"
+                                selected>
+                                ⭐⭐⭐⭐⭐
+                            </option>
+
+                        </select>
+
+
+                        <button
+                            type="button"
+                            onclick="rateVendor()"
+                            class="btn-secondary">
+
+                            Rate
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="rateResult"
+                        class="result-box hidden">
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+     EVENT COMPLETION & REVIEW
+========================= -->
+
+<div class="rating-section">
+
+    <h3>
+        <i class="fas fa-chart-line"></i>
+        Event Completion & Review
+    </h3>
+
+    <p>
+        Select an event, mark it as completed,
+        then submit event and vendor ratings.
+    </p>
+
+
+    <!-- Step 1: Select Event -->
+
+    <div class="form-group">
+
+        <label>
+            <i class="fas fa-calendar"></i>
+            Select Event *
+        </label>
+
+        <select id="reviewEventId">
+
+            <option value="">
+                Select an event...
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- Event Completion Status -->
+
+    <div
+        id="eventCompletionStatus"
+        class="result-box">
+
+        Step 1: Select an event.
+
+    </div>
+
+
+    <!-- Step 2: Complete Event -->
+
+    <div class="review-buttons">
+
+        <button
+            type="button"
+            id="completeEventBtn"
+            onclick="markEventCompleted()"
+            class="btn-primary"
+            disabled>
+
+            <i class="fas fa-check-circle"></i>
+            Mark Event as Completed
+
+        </button>
+
+    </div>
+
+
+    <!-- Step 3: Event Rating -->
+
+    <div class="form-group">
+
+        <label>
+            <i class="fas fa-star"></i>
+            Event Rating *
+        </label>
+
+        <select
+            id="eventRating"
+            required>
+
+            <option value="">
+                Select event rating...
+            </option>
+
+            <option value="1">
+                ⭐
+            </option>
+
+            <option value="2">
+                ⭐⭐
+            </option>
+
+            <option value="3">
+                ⭐⭐⭐
+            </option>
+
+            <option value="4">
+                ⭐⭐⭐⭐
+            </option>
+
+            <option value="5">
+                ⭐⭐⭐⭐⭐
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- Step 3: Vendor Ratings -->
+
+    <div
+        id="vendorRatingArea">
+
+        <p>
+            Select an event to see its assigned vendors.
+        </p>
+
+    </div>
+
+
+    <!-- Rating Result -->
+
+    <div
+        id="ratingResult"
+        class="result-box hidden">
+    </div>
+
+
+    <!-- Step 4 & 5: Ratings and Report -->
+
+    <div class="review-buttons">
+
+        <button
+            type="button"
+            id="submitRatingsBtn"
+            onclick="submitRatings()"
+            class="btn-secondary"
+            disabled>
+
+            <i class="fas fa-star"></i>
+            Submit Event & Vendor Ratings
+
+        </button>
+
+
+        <button
+            type="button"
+            id="viewReportBtn"
+            onclick="viewFinalReport(document.getElementById('reviewEventId').value)"
+            class="btn-primary"
+            disabled>
+
+            <i class="fas fa-chart-line"></i>
+            View Final Report
+
+        </button>
+
+    </div>
+
+
+    <!-- Final Report -->
+
+    <div
+        id="reportResult">
+    </div>
+
+</div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ASSIGN VENDOR
+        ========================== -->
+
+        <div
+            class="vendor-content"
+            id="assign">
+
+            <div class="vendor-card">
+
+                <h3>
+                    <i class="fas fa-link"></i>
+                    Assign Vendor to Event
+                </h3>
+
+
+                <form id="assignForm">
+
+                    <div class="form-group">
+
+                        <label>
+                            <i class="fas fa-calendar"></i>
+                            Event *
+                        </label>
+
+                        <select
+                            id="assignEventId"
+                            required>
+
+                            <option value="">
+                                Select event...
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            <i class="fas fa-store"></i>
+                            Vendor *
+                        </label>
+
+                        <select
+                            id="assignVendorId"
+                            required>
+
+                            <option value="">
+                                Select vendor...
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            <i class="fas fa-tools"></i>
+                            Service Description
+                        </label>
+
+                        <input
+                            type="text"
+                            id="assignService"
+                            placeholder="What service will this vendor provide?"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+
+                        <i class="fas fa-link"></i>
+                        Assign Vendor
+
+                    </button>
+
+                </form>
+
+
+                <div
+                    id="assignResult"
+                    class="result-box hidden">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ASSIGNMENTS
+        ========================== -->
+
+        <div
+            class="vendor-content"
+            id="assignments">
+
+            <div class="vendor-card">
+
+                <h3>
+                    <i class="fas fa-tasks"></i>
+                    Vendor Assignments
+                </h3>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Event</th>
+                                <th>Vendor</th>
+                                <th>Service</th>
+                                <th>Status</th>
+                                <th>Assigned At</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="assignmentsBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="text-center">
+
+                                    No assignments yet
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    id="toast"
+    class="toast hidden">
+
+    <span id="toastMessage"></span>
+
+    <button
+        type="button"
+        onclick="hideToast()">
+
+        &times;
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
